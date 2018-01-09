@@ -30,7 +30,7 @@ public class ServerImpl extends Server {
         if (gameExists(request.getGamename())) {
             return new FailResponse(new Exception("Game Already exists"), request);
         } else {
-            getGames().put(request.getGamename(), new Game(request.getGamename()));
+            getGames().put(request.getGamename(), new Game(request.getGamename(),2));
             return new SuccessResponse(request);
         }
     }
@@ -52,12 +52,16 @@ public class ServerImpl extends Server {
     @Override
     public Response pollGame(PollRequest request) {
         request.setGame(getGames().get(request.getGameID()));
+
+        for (InputKey inputKey : request.getInput()) {
+            handleKeyboardHit(inputKey);
+        }
+
         return new SuccessResponse(request);
     }
 
     @Override
     public Response checkID(CheckIDRequest request) {
-
         for (Map.Entry<String, Game> games : getGames().entrySet()) {
             for (Player player : games.getValue().getPlayers()) {
                 if (player.getUserID().equals(request.getId())) {
@@ -75,7 +79,8 @@ public class ServerImpl extends Server {
 
     @Override
     public Response joinGame(JoinRequest request) {
-
+        if(gameExists(request.getGameID())){
+        }
         return null;
     }
 

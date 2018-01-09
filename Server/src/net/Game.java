@@ -3,24 +3,21 @@ package net;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by testuser on 19.12.2017.
- */
+
 public class Game extends Thread {
     private String nameOfTheGame;
     private Set<GameArea> arenas;
     private Set<Player> players;
     private Set<Viewer> viewers;
+    private int maxPlayers;
     private GameState currentState;
 
-    public Game(String nameOfTheGame) {
+    public Game(String nameOfTheGame,int maxPlayers) {
 
         arenas = new HashSet();
-
         players = new HashSet();
-
         viewers = new HashSet();
-
+        this.maxPlayers=maxPlayers;
 
         currentState = GameState.GAME_PAUSE;
 
@@ -68,5 +65,13 @@ public class Game extends Thread {
 
     public void addArea(GameArea area) {
         this.arenas.add(area);
+    }
+
+    public int getMaxPlayers() {
+        return maxPlayers;
+    }
+
+    public void setMaxPlayers(int maxPlayers) {
+        this.maxPlayers = maxPlayers;
     }
 }
