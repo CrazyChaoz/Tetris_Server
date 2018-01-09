@@ -1,5 +1,6 @@
 package at.htlwels.it.model
 
+import javafx.scene.image.Image
 import java.security.SecureRandom
 
 class Trock(var currBlock: Int = Math.abs(SecureRandom().nextInt() % 7), var rotation: Int = 0, var currY: Short = 22, var currX: Short = 4) {
@@ -7,11 +8,11 @@ class Trock(var currBlock: Int = Math.abs(SecureRandom().nextInt() % 7), var rot
         return Stepz.meta[currBlock][rotation]
     }
 }
-/*
-object Textures {
-    val texture: Array<Texture> = arrayOf(Texture("transparent.png"), Texture("cyan.png"), Texture("yellow.png"), Texture("blue.png"), Texture("orange.png"), Texture("purple.png"), Texture("green.png"), Texture("red.png"))
+
+object Images {
+    val texture: Array<Image> = arrayOf(Image("file:transparent.png"), Image("file:cyan.png"), Image("file:yellow.png"), Image("file:blue.png"), Image("file:orange.png"), Image("file:purple.png"), Image("file:green.png"), Image("file:red.png"))
 }
-*/
+
 object Stepz {
     internal var meta = arrayOf(
 
