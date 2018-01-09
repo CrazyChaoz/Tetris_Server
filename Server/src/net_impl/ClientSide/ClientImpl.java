@@ -17,38 +17,38 @@ import java.net.Socket;
 
 
 /**
- * this class is used for processing servers response
+ * this class is used for communicating with the server
  */
 public class ClientImpl extends Client {
 
-    private Transmitter transmitter;
-
-    public ClientImpl(Transmitter transmitter) {
-        this.transmitter = transmitter;
-    }
 
     public static void main(String[] args) throws IOException {
 
+        /**
+        * Communication Example
+        * */
+        //TODO: Input by GUI
+
         Transmitter transmitter = new ObjectTransmitter();
         transmitter.open(new Socket("127.0.0.1", 12345));
-        ClientImpl client = new ClientImpl(transmitter);
+        ClientImpl client = new ClientImpl();
 
         client.createGame(new CreateRequest("Game-1"));
         client.joinGame(new JoinRequest("Game-1"));
+
+        //Should only work with {2} Players
         client.startGame(new StartRequest("Game-1"));
 
+
+
+        //TODO: Loop The Input, Sending & Polling
+        //TODO: Use Userinput
+        client.handleKeyboardHit(InputKey.LEFT);
+        client.handleKeyboardHit(InputKey.LEFT);
+        client.handleKeyboardHit(InputKey.DOWN);
+
+        transmitter.send(client.getAndClearPollRequest());
         client.pollGame(new PollRequest("Game-1"));
-
-
-        KeyboardHitRequest keyHits=new KeyboardHitRequest();
-        keyHits.addInput(InputKey.DOWN);
-        keyHits.addInput(InputKey.LEFT);
-
-        transmitter.send(keyHits);
-        client.pollGame(new PollRequest("Game-1"));
-
-
-
 
     }
 
@@ -93,10 +93,4 @@ public class ClientImpl extends Client {
         transmitter.send(request);
         return transmitter.receive();
     }
-
-    @Override
-    public Response handleKeyboardHit(KeyboardHitRequest request) {
-        return null;
-    }
-
 }

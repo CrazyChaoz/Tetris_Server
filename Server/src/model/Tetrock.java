@@ -10,16 +10,34 @@ Z Red
 J Blue
 L Orange
  */
+
+
+/*
+*
+* A Lonely Class In A LoneLy World
+*
+* ##only used for converting array into kotlin
+*
+* */
+
+
+//The ArrayFields
+/* 0/0 -- 0/3 */
+/* 1/0 -- 1/3 */
+/* 2/0 -- 2/3 */
+/* 3/0 -- 3/3 ## y*4+x*/
+
+
 public class Tetrock {
     int[][][] meta =
             {
 
                     {// LETTER I
                             {
-                                    0, 0, 0, 0, /* 0/0 -- 0/3 */
-                                    1, 1, 1, 1, /* 1/0 -- 1/3 */
-                                    0, 0, 0, 0, /* 2/0 -- 2/3 */
-                                    0, 0, 0, 0  /* 3/0 -- 3/3 ## y*4+x*/
+                                    0, 0, 0, 0,
+                                    1, 1, 1, 1,
+                                    0, 0, 0, 0,
+                                    0, 0, 0, 0
                             }, {
                             0, 0, 1, 0,
                             0, 0, 1, 0,

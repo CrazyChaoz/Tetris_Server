@@ -1,4 +1,7 @@
 
 .root{
+    /*
+    IntelliJ limitations ... or Bugs ???
+    */
     -fx-background-image: url("../../../src/view/assets/background.png");
 }

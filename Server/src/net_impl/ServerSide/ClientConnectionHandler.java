@@ -51,8 +51,6 @@ public class ClientConnectionHandler extends Thread {
                     response = server.endGame((EndRequest) request);
                 } else if (request instanceof JoinRequest) {
                     response = server.joinGame((JoinRequest) request);
-                } else if (request instanceof KeyboardHitRequest) {
-                    response = server.handleKeyboardHit((KeyboardHitRequest) request);
                 } else if (request instanceof ListRequest) {
                     response = server.listGames((ListRequest) request);
                 } else if (request instanceof PollRequest) {

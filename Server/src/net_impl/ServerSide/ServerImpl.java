@@ -80,7 +80,7 @@ public class ServerImpl extends Server {
     }
 
     @Override
-    public Response handleKeyboardHit(KeyboardHitRequest request) {
-        return null;
+    protected void handleKeyboardHit(InputKey inputKey) {
+
     }
 }

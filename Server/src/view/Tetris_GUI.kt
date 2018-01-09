@@ -94,6 +94,10 @@ class Tetris_GUI: Application() {
 }
 
 fun main(args: Array<String>) {
-    Application.launch(Tetris_GUI::class.java)
+    //Application.launch(Tetris_GUI::class.java)
+    var t:String?="asdadsa"
+    var z:String?=t
+    t=null
+    print(z)
 }
 

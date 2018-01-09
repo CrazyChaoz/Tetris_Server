@@ -18,5 +18,5 @@ public abstract class Instance {
 
     public abstract Response joinGame(JoinRequest request);
 
-    public abstract Response handleKeyboardHit(KeyboardHitRequest request);
+    protected abstract void handleKeyboardHit(InputKey inputKey);
 }
