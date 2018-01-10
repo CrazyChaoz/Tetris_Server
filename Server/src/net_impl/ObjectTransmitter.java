@@ -2,6 +2,7 @@ package net_impl;
 
 import net.Request;
 import net.Response;
+import net.Sendable;
 import net.Transmitter;
 import net_response.FailResponse;
 
@@ -26,9 +27,9 @@ public class ObjectTransmitter extends Transmitter {
     }
 
     @Override
-    public void send(Request object) {
+    public void send(Sendable request) {
         try {
-            ((ObjectOutputStream) outputStream).writeObject(object);
+            ((ObjectOutputStream) outputStream).writeObject(request);
         } catch (IOException e) {
             System.err.println("Error on sending Object to Stream: " + e.getMessage());
         }

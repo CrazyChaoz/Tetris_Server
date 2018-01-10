@@ -2,6 +2,7 @@ package net_response;
 
 import net.Request;
 import net.Response;
+import net.Sendable;
 
 /**
  * Created by testuser on 17.12.2017.
@@ -9,18 +10,23 @@ import net.Response;
 public class FailResponse implements Response {
 
     private Exception exceptionThrown;
-    private Request request;
+    private Sendable request;
 
-    public FailResponse(Exception exceptionThrown,Request request) {
+    public FailResponse(Exception exceptionThrown, Sendable request) {
         this.exceptionThrown = exceptionThrown;
-        this.request=request;
+        this.request = request;
     }
 
     public Exception getExceptionThrown() {
         return exceptionThrown;
     }
 
+
+    @Override
     public Request getRequest() {
-        return request;
+        if (request instanceof Request)
+            return (Request) request;
+        else
+            return null;
     }
 }

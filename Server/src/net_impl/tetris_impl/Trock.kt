@@ -1,4 +1,4 @@
-package model
+package net_impl.tetris_impl
 
 import javafx.scene.image.Image
 import java.security.SecureRandom

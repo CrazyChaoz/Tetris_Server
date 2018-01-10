@@ -1,9 +1,9 @@
 package net_impl.ServerSide;
 
-import net_impl.ObjectTransmitter;
-import net_response.FailResponse;
 import net.*;
+import net_impl.ObjectTransmitter;
 import net_requests.*;
+import net_response.FailResponse;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -36,15 +36,19 @@ public class ClientConnectionHandler extends Thread {
             Transmitter t = new ObjectTransmitter();
             t.open(s);
 
-            Person p = idConfig(t);
+            Person p = personConfig(t);
             server.addPerson(p);
 
             for (; ; ) {
 
-                Request request = t.receive();
-                Response response = null;
+                Sendable request = t.receive();
+
+
+                Sendable response = null;
+
+                //TODO: Verschönern/Verbessern
                 if (request instanceof CheckIDRequest) {
-                    response = server.checkID((CheckIDRequest) request);
+                    response = new FailResponse(new Exception("ID ALREADY ASSIGNED"),request);
                 } else if (request instanceof CreateRequest) {
                     response = server.createGame((CreateRequest) request);
                 } else if (request instanceof EndRequest) {
@@ -69,10 +73,10 @@ public class ClientConnectionHandler extends Thread {
         this.stop();
     }
 
-    public Person idConfig(Transmitter t) {
+    public Person personConfig(Transmitter t) {
         String id = null;
         Person p = null;
-        Response request = null;
+        Sendable request = null;
 
         do {
             request = t.receive();
@@ -85,10 +89,10 @@ public class ClientConnectionHandler extends Thread {
 
         switch (((CheckIDRequest) request.getRequest()).getState()) {
             case PLAYING:
-                p = new Player(((CheckIDRequest) request.getRequest()).getId(), t);
+                p = new Player(request.getRequest().getUserID(), t);
                 break;
             case VIEWING:
-                p = new Viewer(((CheckIDRequest) request.getRequest()).getId(), t);
+                p = new Viewer(request.getRequest().getUserID(), t);
                 break;
         }
 

@@ -5,7 +5,7 @@ import net.Request;
 /**
  * Created by testuser on 13.12.2017.
  */
-public class CreateRequest implements Request {
+public class CreateRequest extends Request {
 
     private String gamename;
 
@@ -14,8 +14,9 @@ public class CreateRequest implements Request {
         return gamename;
     }
 
-    public CreateRequest(String gamename) {
-        this.gamename=gamename;
+    public CreateRequest(String userID,String gameID) {
+        super(userID);
+        this.gamename=gameID;
 
     }
 }

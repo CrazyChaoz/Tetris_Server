@@ -9,18 +9,15 @@ public abstract class Person extends Thread {
     private Transmitter transmitter;
     private Game assignedGame;
 
-
     public Person(String userID, Transmitter transmitter) {
         this.userID = userID;
         this.transmitter = transmitter;
+
+        assignedGame = null;
     }
 
     public void assignGame(Game game) {
         this.assignedGame = game;
-    }
-
-    public void setPersonState(PersonState state) {
-        this.state = state;
     }
 
     public String getUserID() {
@@ -35,8 +32,16 @@ public abstract class Person extends Thread {
         return assignedGame;
     }
 
+    public boolean isAssigned() {
+        return assignedGame == null ? false : true;
+    }
+
     public PersonState getPersonState() {
         return state;
+    }
+
+    public void setPersonState(PersonState state) {
+        this.state = state;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package view
 
-import controller.TetrisArena
-import model.Images
+import net_impl.tetris_impl.TetrisArena
+import net_impl.tetris_impl.Images
 import javafx.fxml.FXML
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane

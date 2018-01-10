@@ -10,14 +10,16 @@ import java.util.Deque;
 /**
  * Created by testuser on 14.12.2017.
  */
-public class PollRequest implements Request {
+public class PollRequest extends Request {
     private String gameID;
     private Game game;
     private Deque<InputKey> input = new ArrayDeque<>();
 
-    public PollRequest(String gameID) {
+    public PollRequest(String userID,String gameID) {
+        super(userID);
         this.gameID = gameID;
     }
+
 
     public void addInput(InputKey key) {
         input.addLast(key);
@@ -37,5 +39,9 @@ public class PollRequest implements Request {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public void resetInput(){
+        input=new ArrayDeque<>();
     }
 }

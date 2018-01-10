@@ -1,4 +1,4 @@
-package model;
+package net_impl.tetris_impl;
 
 
 /*
@@ -16,7 +16,7 @@ L Orange
 *
 * A Lonely Class In A LoneLy World
 *
-* ##only used for converting array into kotlin
+* only used for converting array into kotlin
 *
 * */
 

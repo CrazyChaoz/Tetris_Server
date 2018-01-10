@@ -17,9 +17,9 @@ public abstract class Transmitter {
 
     public abstract void open(Socket socket);
 
-    public abstract void send(Request request);
+    public abstract void send(Sendable request);
 
-    public abstract Response receive();
+    public abstract Sendable receive();
 
     public abstract void handleFailure(FailResponse failPackage);
 

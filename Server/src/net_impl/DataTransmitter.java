@@ -2,6 +2,7 @@ package net_impl;
 
 import net.Request;
 import net.Response;
+import net.Sendable;
 import net.Transmitter;
 import net_response.FailResponse;
 
@@ -27,8 +28,7 @@ public class DataTransmitter extends Transmitter {
     }
 
     @Override
-    public void send(Request request) {
-
+    public void send(Sendable request) {
     }
 
     @Override

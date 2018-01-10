@@ -4,19 +4,19 @@ package net;
 import net_requests.*;
 
 public abstract class Instance {
-    public abstract Response startGame(StartRequest request);
+    public abstract Sendable startGame(StartRequest request);
 
-    public abstract Response createGame(CreateRequest request);
+    public abstract Sendable createGame(CreateRequest request);
 
-    public abstract Response listGames(ListRequest request);
+    public abstract Sendable listGames(ListRequest request);
 
-    public abstract Response endGame(EndRequest request);
+    public abstract Sendable endGame(EndRequest request);
 
-    public abstract Response pollGame(PollRequest request);
+    public abstract Sendable pollGame(PollRequest request);
 
-    public abstract Response checkID(CheckIDRequest request);
+    public abstract Sendable checkID(CheckIDRequest request);
 
-    public abstract Response joinGame(JoinRequest request);
+    public abstract Sendable joinGame(JoinRequest request);
 
     protected abstract void handleKeyboardHit(InputKey inputKey);
 }

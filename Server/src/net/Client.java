@@ -14,7 +14,7 @@ public abstract class Client extends Instance {
 
     protected PollRequest getAndClearPollRequest() {
         PollRequest retval = inputs;
-        inputs = null;
+        inputs.resetInput();
         return retval;
     }
 

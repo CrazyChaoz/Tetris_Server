@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent
 import javafx.scene.paint.Color
 import javafx.stage.Stage
 import javafx.stage.StageStyle
-import controller.TetrisArena
+import net_impl.tetris_impl.TetrisArena
 
 class Tetris_GUI: Application() {
 

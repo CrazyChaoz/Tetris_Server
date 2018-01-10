@@ -1,12 +1,14 @@
-package controller
+package net_impl.tetris_impl
 
-import model.Stepz
-import model.Trock
+import net_impl.tetris_impl.Stepz
+import net_impl.tetris_impl.Trock
 import net.GameArea
 import java.security.SecureRandom
 
 
-class TetrisArena : GameArea{
+
+
+class TetrisArena : GameArea {
     //Array of Array of Pixel with start value 0
     var area: Array<IntArray> = Array(20, { IntArray(10, { 0 }) })
     var currTrock: Trock = Trock()

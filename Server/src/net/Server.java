@@ -6,9 +6,8 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Server extends Instance {
-    private static AtomicInteger id = new AtomicInteger(0);
     private ConcurrentMap<String, Game> games = new ConcurrentHashMap<>();
-    private ConcurrentMap<Integer, Person> personConcurrentMap = new ConcurrentHashMap();
+    private ConcurrentMap<String, Person> personConcurrentMap = new ConcurrentHashMap();
 
     public boolean gameExists(String game) {
         return games.containsKey(game);
@@ -23,6 +22,18 @@ public abstract class Server extends Instance {
     }
 
     public void addPerson(Person p) {
-        personConcurrentMap.put(id.getAndAdd(1), p);
+        personConcurrentMap.put(p.getUserID(), p);
+    }
+
+    public ConcurrentMap<String, Person> getConnectedPeople() {
+        return personConcurrentMap;
+    }
+
+    public Game getGame(String gameID) {
+        return games.get(gameID);
+    }
+
+    public Person getPerson(String userId){
+        return personConcurrentMap.get(userId);
     }
 }
